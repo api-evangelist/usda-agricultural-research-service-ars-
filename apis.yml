@@ -27,15 +27,11 @@ created: '2024-11-21'
 modified: '2026-03-16'
 position: Consuming
 description: >-
-  The USDA Agricultural Research Service (ARS) conducts research to develop and
-  implement solutions to agricultural problems. Specifically, ARS scientists
-  conduct research in areas such as crop protection, animal health, food safety,
-  natural resource management, and sustainable agriculture. Their work aims to
-  improve crop yields, develop new technologies, and find ways to reduce the
-  environmental impact of agriculture. Through collaborations with universities,
-  industry, and government agencies, ARS researchers work to advance the
-  knowledge and practices that support a thriving agricultural sector and
-  contribute to a healthy and sustainable food supply.
+  The USDA Agricultural Research Service (ARS) conducts research to develop and implement
+  solutions to agricultural problems. Specifically, ARS scientists conduct research
+  in areas such as crop protection, animal health, food safety, natural resource management,
+  and sustainable agriculture. Their work aims to improve crop yields, develop new
+  technologies, and find ways to reduce the environmental impact of agriculture.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
