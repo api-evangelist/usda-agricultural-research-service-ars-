@@ -1,0 +1,25 @@
+{
+  "name": "USDA FoodData Central Food Item",
+  "description": "Structure of food records from the USDA FoodData Central API",
+  "fields": [
+    {"name": "fdcId", "type": "integer", "required": true, "description": "Unique FDC identifier"},
+    {"name": "description", "type": "string", "required": true, "description": "Food name/description"},
+    {"name": "dataType", "type": "string", "required": true, "description": "Foundation, Branded, SR Legacy, Survey, Experimental"},
+    {"name": "publishedDate", "type": "date", "required": false, "description": "FDC publication date"},
+    {"name": "foodCategory", "type": "string|null", "required": false, "description": "USDA food category"},
+    {"name": "brandOwner", "type": "string|null", "required": false, "description": "Brand owner (Branded only)"},
+    {"name": "ingredients", "type": "string|null", "required": false, "description": "Ingredient list (Branded only)"},
+    {"name": "servingSize", "type": "number|null", "required": false, "description": "Standard serving size"},
+    {"name": "servingSizeUnit", "type": "string|null", "required": false, "description": "g, ml, etc."},
+    {"name": "foodNutrients", "type": "array[FoodNutrient]", "required": false, "description": "Nutrients per 100g"}
+  ],
+  "nested": {
+    "FoodNutrient": [
+      {"name": "nutrientId", "type": "integer"},
+      {"name": "nutrientName", "type": "string"},
+      {"name": "nutrientNumber", "type": "string"},
+      {"name": "unitName", "type": "string", "description": "g, mg, kcal, IU, etc."},
+      {"name": "value", "type": "number", "description": "Amount per 100g"}
+    ]
+  }
+}

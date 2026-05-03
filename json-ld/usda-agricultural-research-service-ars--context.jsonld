@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "food": "https://fdc.nal.usda.gov/vocab/",
+    "agri": "https://aims.fao.org/aos/agrovoc/",
+
+    "FoodItem": "schema:NutritionInformation",
+    "FoodNutrient": "schema:PropertyValue",
+    "AgriculturalDataset": "schema:Dataset",
+
+    "fdcId": {
+      "@id": "food:fdcId",
+      "@type": "xsd:integer"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "dataType": {
+      "@id": "food:dataType",
+      "@type": "xsd:string"
+    },
+    "publishedDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:date"
+    },
+    "foodCategory": {
+      "@id": "food:foodCategory",
+      "@type": "xsd:string"
+    },
+    "brandOwner": {
+      "@id": "schema:brand",
+      "@type": "xsd:string"
+    },
+    "ingredients": {
+      "@id": "food:ingredients",
+      "@type": "xsd:string"
+    },
+    "servingSize": {
+      "@id": "schema:servingSize",
+      "@type": "xsd:decimal"
+    },
+    "foodNutrients": {
+      "@id": "schema:nutrition",
+      "@container": "@set"
+    },
+    "nutrientName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "unitName": {
+      "@id": "schema:unitText",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "schema:value",
+      "@type": "xsd:decimal"
+    },
+
+    "title": {
+      "@id": "dcterms:title",
+      "@type": "xsd:string"
+    },
+    "notes": {
+      "@id": "dcterms:description",
+      "@type": "xsd:string"
+    },
+    "author": {
+      "@id": "dcterms:creator",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "dcterms:subject",
+      "@container": "@set"
+    },
+    "license_title": {
+      "@id": "dcterms:license",
+      "@type": "xsd:string"
+    }
+  }
+}

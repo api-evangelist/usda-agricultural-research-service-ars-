@@ -1,0 +1,322 @@
+openapi: 3.0.1
+info:
+  title: USDA Ag Data Commons CKAN API
+  description: >-
+    The USDA Ag Data Commons is an agricultural research data repository powered
+    by DKAN/CKAN. The API provides metadata discovery for datasets from USDA
+    Agricultural Research Service national programs. No authentication required
+    for read access.
+  version: "1.0"
+  contact:
+    name: USDA National Agricultural Library - Ag Data Commons
+    url: https://agdatacommons.nal.usda.gov
+  license:
+    name: CC0 1.0 Universal
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+  - url: https://data.nal.usda.gov
+security: []
+tags:
+  - name: Datasets
+    description: Dataset metadata search and retrieval
+  - name: ARS Programs
+    description: ARS National Program dataset discovery
+paths:
+  /api/action/package_search:
+    get:
+      tags:
+        - Datasets
+      operationId: searchDatasets
+      summary: Search Agricultural Research Datasets
+      description: >-
+        Search the Ag Data Commons catalog for agricultural research datasets.
+        Returns dataset metadata including title, description, author, and
+        distribution formats.
+      parameters:
+        - name: q
+          in: query
+          description: Search query string
+          schema:
+            type: string
+          example: soil health
+        - name: fq
+          in: query
+          description: >-
+            Filter query (e.g., 'tags:"corn" organization:"ars"')
+          schema:
+            type: string
+        - name: rows
+          in: query
+          description: Number of results to return (max 1000)
+          schema:
+            type: integer
+            default: 20
+            maximum: 1000
+        - name: start
+          in: query
+          description: Offset for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: sort
+          in: query
+          description: Sort field and direction
+          schema:
+            type: string
+            example: score desc, metadata_modified desc
+      responses:
+        '200':
+          description: Dataset search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageSearchResult'
+  /api/action/package_show:
+    get:
+      tags:
+        - Datasets
+      operationId: getDataset
+      summary: Get Dataset by ID
+      description: Retrieve full metadata for a specific dataset by its ID or name.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: Dataset ID or name slug
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Dataset metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageShowResult'
+        '404':
+          description: Dataset not found
+  /api/action/tag_list:
+    get:
+      tags:
+        - Datasets
+      operationId: listTags
+      summary: List Dataset Tags
+      description: Returns a list of all tags used in the Ag Data Commons catalog.
+      parameters:
+        - name: vocabulary_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of tags
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  result:
+                    type: array
+                    items:
+                      type: string
+  /api/action/organization_list:
+    get:
+      tags:
+        - Datasets
+      operationId: listOrganizations
+      summary: List Dataset Organizations
+      description: Returns a list of organizations (e.g., ARS national programs) in the catalog.
+      responses:
+        '200':
+          description: List of organizations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  result:
+                    type: array
+                    items:
+                      type: string
+  /api/action/datastore_search:
+    get:
+      tags:
+        - Datasets
+      operationId: searchDatastoreResource
+      summary: Search Datastore Resource Records
+      description: >-
+        Query records within a specific published dataset resource using the
+        CKAN datastore. Returns tabular data rows from published datasets.
+      parameters:
+        - name: resource_id
+          in: query
+          required: true
+          description: The resource ID to query
+          schema:
+            type: string
+        - name: q
+          in: query
+          description: Full-text search query
+          schema:
+            type: string
+        - name: filters
+          in: query
+          description: JSON object of field-value filter pairs
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Number of rows to return
+          schema:
+            type: integer
+            default: 100
+            maximum: 32000
+        - name: offset
+          in: query
+          description: Offset for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: fields
+          in: query
+          description: Comma-separated list of fields to return
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Comma-separated list of fields to sort by
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Datastore query results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  result:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      records:
+                        type: array
+                        items:
+                          type: object
+                      fields:
+                        type: array
+                        items:
+                          type: object
+components:
+  schemas:
+    PackageSearchResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        result:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total matching datasets
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Dataset'
+    PackageShowResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Dataset'
+    Dataset:
+      type: object
+      description: Agricultural research dataset metadata
+      properties:
+        id:
+          type: string
+          description: Unique dataset identifier
+        name:
+          type: string
+          description: URL-safe name slug
+        title:
+          type: string
+          description: Dataset title
+        notes:
+          type: string
+          nullable: true
+          description: Description of the dataset
+        author:
+          type: string
+          nullable: true
+          description: Dataset author(s)
+        author_email:
+          type: string
+          nullable: true
+        organization:
+          type: object
+          nullable: true
+          description: Organization (ARS national program)
+          properties:
+            name:
+              type: string
+            title:
+              type: string
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              display_name:
+                type: string
+        resources:
+          type: array
+          description: Data files and distribution links
+          items:
+            $ref: '#/components/schemas/Resource'
+        metadata_created:
+          type: string
+          format: date-time
+        metadata_modified:
+          type: string
+          format: date-time
+        license_title:
+          type: string
+          nullable: true
+    Resource:
+      type: object
+      description: A data file or distribution of a dataset
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        url:
+          type: string
+          format: uri
+        format:
+          type: string
+          description: File format (CSV, JSON, GeoTIFF, etc.)
+        size:
+          type: integer
+          nullable: true
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type: string
+          format: date-time
+          nullable: true

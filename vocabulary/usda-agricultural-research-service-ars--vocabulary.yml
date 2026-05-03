@@ -1,0 +1,116 @@
+vocabulary:
+  name: USDA Agricultural Research Service (ARS) Vocabulary
+  description: >-
+    Domain vocabulary for the USDA Agricultural Research Service, covering
+    food nutrition science, agricultural research, and open data concepts.
+  version: "1.0.0"
+  created: "2026-05-03"
+  domain: Agricultural Research
+
+terms:
+  - term: FoodData Central (FDC)
+    definition: >-
+      USDA's integrated food and nutrition data system providing nutritional
+      composition data for thousands of foods, accessible via REST API.
+    type: System
+    tags: [Nutrition, Food Science, API]
+
+  - term: Foundation Foods
+    definition: >-
+      The highest quality USDA nutritional data, with values derived from
+      multiple analytical samples with full documentation of sampling and methods.
+    type: Data Type
+    tags: [Nutrition, FoodData Central]
+
+  - term: SR Legacy
+    definition: >-
+      Standard Reference Legacy — the longstanding USDA nutritional database
+      (replaced by Foundation Foods and FDC as the primary reference).
+    type: Data Type
+    tags: [Nutrition, FoodData Central]
+
+  - term: Branded Foods
+    definition: >-
+      FDC data type containing nutrition facts from manufacturer-submitted data
+      for branded and packaged food products sold in the US.
+    type: Data Type
+    tags: [Nutrition, FoodData Central]
+
+  - term: Survey Foods (FNDDS)
+    definition: >-
+      Food and Nutrient Database for Dietary Studies — data linked to the
+      National Health and Nutrition Examination Survey (NHANES) dietary recall.
+    type: Data Type
+    tags: [Nutrition, FoodData Central, Public Health]
+
+  - term: FDC ID
+    definition: >-
+      FoodData Central identifier — a unique integer assigned to each food
+      record in the FoodData Central database.
+    type: Identifier
+    tags: [Nutrition, FoodData Central]
+
+  - term: Nutrient
+    definition: >-
+      A chemical component of food (e.g., protein, fat, carbohydrate, vitamin,
+      mineral) with a USDA nutrient ID and measurement in standardized units
+      (typically per 100g of food).
+    type: Concept
+    tags: [Nutrition, Food Science]
+
+  - term: Ag Data Commons
+    definition: >-
+      USDA's open agricultural research data repository powered by DKAN/CKAN,
+      hosting datasets from ARS national research programs.
+    type: System
+    tags: [Agricultural Research, Open Data]
+
+  - term: CKAN/DKAN API
+    definition: >-
+      The Comprehensive Knowledge Archive Network data catalog API used by
+      Ag Data Commons to provide metadata discovery and dataset search.
+    type: Standard
+    tags: [Open Data, API, Standards]
+
+  - term: ARS National Programs
+    definition: >-
+      USDA ARS's research program areas (e.g., Crop Production, Animal
+      Production, Natural Resources, Nutrition, Food Safety) that organize and
+      categorize ARS research datasets.
+    type: Concept
+    tags: [Agricultural Research]
+
+  - term: Germplasm Resources Information Network (GRIN)
+    definition: >-
+      USDA ARS's database of genetic resources for plant, animal, microbial,
+      and invertebrate species. Manages the National Plant Germplasm System (NPGS).
+    type: System
+    tags: [Genetics, Agricultural Research]
+
+  - term: Long-Term Agroecosystem Research (LTAR)
+    definition: >-
+      A USDA ARS network of 18 research sites conducting long-term studies of
+      agricultural ecosystems. LTAR datasets are available through Ag Data Commons.
+    type: Research Program
+    tags: [Agricultural Research, Climate, Soil Health]
+
+  - term: Soil Health
+    definition: >-
+      The continued capacity of soil to function as a vital living ecosystem
+      that sustains plants, animals, and humans. A major ARS research domain.
+    type: Concept
+    tags: [Soil, Agricultural Research, Sustainability]
+
+  - term: Food Safety
+    definition: >-
+      ARS research area focused on detecting, preventing, and mitigating
+      contamination of food products from pathogens, toxins, and contaminants.
+    type: Research Domain
+    tags: [Food Safety, Agricultural Research]
+
+  - term: CC0 1.0 Universal
+    definition: >-
+      The Creative Commons public domain dedication applied to USDA FoodData
+      Central data — meaning the data is free of copyright restrictions.
+    type: License
+    tags: [Open Data, Legal]

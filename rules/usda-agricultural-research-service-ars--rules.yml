@@ -1,0 +1,63 @@
+extends: "spectral:oas"
+rules:
+  usda-ars-operation-summary:
+    description: All operations must have a summary
+    message: "Operation missing summary"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: summary
+      function: truthy
+
+  usda-ars-operation-tags:
+    description: All operations must have tags
+    message: "Operation missing tags"
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  usda-ars-get-200-response:
+    description: GET operations must define a 200 response
+    message: "GET operation missing 200 response"
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: truthy
+
+  usda-ars-api-key-authentication:
+    description: FoodData Central API requires api_key parameter
+    message: "FDC API endpoints should document api_key query parameter"
+    severity: info
+    given: "$.paths[*].get.parameters[*]"
+    then:
+      function: truthy
+
+  usda-ars-path-params-documented:
+    description: Path parameters must have descriptions
+    message: "Path parameter missing description"
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in == 'path')]"
+    then:
+      field: description
+      function: truthy
+
+  usda-ars-license-info:
+    description: APIs should document the CC0 license
+    message: "API should include license information (CC0 1.0 Universal)"
+    severity: info
+    given: "$.info"
+    then:
+      field: license
+      function: truthy
+
+  usda-ars-contact-info:
+    description: APIs should have contact information
+    message: "API missing contact information"
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy

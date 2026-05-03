@@ -1,0 +1,77 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.nal.usda.gov/fdc/v1/foods/search?query=whole+wheat+bread&dataType=Foundation,SR+Legacy&pageSize=2&api_key=YOUR_API_KEY",
+    "description": "Search for whole wheat bread in Foundation Foods and SR Legacy data types"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "totalHits": 42,
+      "currentPage": 1,
+      "totalPages": 21,
+      "foods": [
+        {
+          "fdcId": 790116,
+          "description": "Bread, whole wheat, commercially prepared",
+          "dataType": "SR Legacy",
+          "publishedDate": "2019-04-01",
+          "foodCategory": "Baked Products",
+          "foodNutrients": [
+            {
+              "nutrientId": 1008,
+              "nutrientName": "Energy",
+              "nutrientNumber": "208",
+              "unitName": "KCAL",
+              "value": 247.0
+            },
+            {
+              "nutrientId": 1003,
+              "nutrientName": "Protein",
+              "nutrientNumber": "203",
+              "unitName": "G",
+              "value": 13.0
+            },
+            {
+              "nutrientId": 1005,
+              "nutrientName": "Carbohydrate, by difference",
+              "nutrientNumber": "205",
+              "unitName": "G",
+              "value": 43.1
+            },
+            {
+              "nutrientId": 1004,
+              "nutrientName": "Total lipid (fat)",
+              "nutrientNumber": "204",
+              "unitName": "G",
+              "value": 3.6
+            }
+          ]
+        },
+        {
+          "fdcId": 168012,
+          "description": "Wheat, hard white",
+          "dataType": "Foundation",
+          "publishedDate": "2019-04-01",
+          "foodCategory": "Cereal Grains and Pasta",
+          "foodNutrients": [
+            {
+              "nutrientId": 1008,
+              "nutrientName": "Energy",
+              "nutrientNumber": "208",
+              "unitName": "KCAL",
+              "value": 342.0
+            },
+            {
+              "nutrientId": 1003,
+              "nutrientName": "Protein",
+              "nutrientNumber": "203",
+              "unitName": "G",
+              "value": 11.3
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

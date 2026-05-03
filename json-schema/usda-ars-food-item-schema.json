@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/main/json-schema/usda-ars-food-item-schema.json",
+  "title": "USDA FoodData Central Food Item",
+  "description": "JSON Schema for a food item record from the USDA FoodData Central API.",
+  "type": "object",
+  "properties": {
+    "fdcId": {
+      "type": "integer",
+      "description": "Unique FoodData Central identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Food description/name"
+    },
+    "dataType": {
+      "type": "string",
+      "enum": ["Foundation", "Branded", "Survey (FNDDS)", "SR Legacy", "Experimental"],
+      "description": "The type of food data record"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the food was published in FDC"
+    },
+    "foodCategory": {
+      "type": ["string", "null"],
+      "description": "USDA food category"
+    },
+    "brandOwner": {
+      "type": ["string", "null"],
+      "description": "Brand owner (Branded Foods only)"
+    },
+    "brandName": {
+      "type": ["string", "null"],
+      "description": "Brand name (Branded Foods only)"
+    },
+    "ingredients": {
+      "type": ["string", "null"],
+      "description": "Ingredient list (Branded Foods only)"
+    },
+    "servingSize": {
+      "type": ["number", "null"],
+      "description": "Standard serving size"
+    },
+    "servingSizeUnit": {
+      "type": ["string", "null"],
+      "description": "Unit for serving size (g, ml, etc.)"
+    },
+    "foodNutrients": {
+      "type": "array",
+      "description": "Nutritional composition per 100g",
+      "items": {
+        "$ref": "#/$defs/FoodNutrient"
+      }
+    }
+  },
+  "required": ["fdcId", "description", "dataType"],
+  "$defs": {
+    "FoodNutrient": {
+      "type": "object",
+      "description": "Individual nutrient measurement",
+      "properties": {
+        "nutrientId": {
+          "type": "integer",
+          "description": "USDA nutrient ID"
+        },
+        "nutrientName": {
+          "type": "string",
+          "description": "Nutrient name"
+        },
+        "nutrientNumber": {
+          "type": "string",
+          "description": "USDA nutrient number"
+        },
+        "unitName": {
+          "type": "string",
+          "description": "Unit of measurement (g, mg, kcal, IU, etc.)"
+        },
+        "value": {
+          "type": "number",
+          "description": "Amount per 100g of food"
+        }
+      },
+      "required": ["nutrientId", "nutrientName", "value"]
+    }
+  }
+}

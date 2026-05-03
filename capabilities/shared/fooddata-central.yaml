@@ -1,0 +1,200 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "USDA FoodData Central API"
+  description: >-
+    FoodData Central provides nutritional data for thousands of foods including
+    Foundation Foods, SR Legacy, Survey Foods, Branded Foods, and Experimental Foods.
+  tags:
+    - Food Data
+    - Nutrition
+    - Agriculture
+    - Federal Government
+    - Open Data
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      USDA_FDC_API_KEY: USDA_FDC_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: usda-fdc
+      baseUri: https://api.nal.usda.gov/fdc/v1
+      description: "USDA FoodData Central REST API."
+      authentication:
+        type: apikey
+        key: api_key
+        value: "{{USDA_FDC_API_KEY}}"
+        placement: query
+      resources:
+        - name: food-search
+          path: /foods/search
+          description: "Search foods by keywords"
+          operations:
+            - name: search-foods
+              method: GET
+              description: "Search for foods matching keywords"
+              inputParameters:
+                - name: query
+                  in: query
+                  type: string
+                  required: true
+                  description: "Search keywords"
+                - name: dataType
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by data type (Foundation, Branded, SR Legacy, etc.)"
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Results per page (max 200)"
+                - name: pageNumber
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+                - name: brandOwner
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by brand owner"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: food-detail
+          path: /food/{fdcId}
+          description: "Individual food record"
+          operations:
+            - name: get-food
+              method: GET
+              description: "Get detailed nutritional data for a food by FDC ID"
+              inputParameters:
+                - name: fdcId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "FoodData Central ID"
+                - name: format
+                  in: query
+                  type: string
+                  required: false
+                  description: "abridged or full"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: foods-list
+          path: /foods/list
+          description: "Browse foods list"
+          operations:
+            - name: list-foods
+              method: GET
+              description: "Get paginated list of foods in abridged format"
+              inputParameters:
+                - name: dataType
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by data type"
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Results per page"
+                - name: pageNumber
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: usda-fdc-api
+      resources:
+        - path: /v1/foods/search
+          name: food-search
+          description: "Food search"
+          operations:
+            - method: GET
+              name: search-foods
+              description: "Search foods by keywords"
+              call: "usda-fdc.search-foods"
+              with:
+                query: "rest.query"
+                dataType: "rest.dataType"
+                pageSize: "rest.pageSize"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/foods/{fdcId}
+          name: food
+          description: "Food detail"
+          operations:
+            - method: GET
+              name: get-food
+              description: "Get food nutritional data"
+              call: "usda-fdc.get-food"
+              with:
+                fdcId: "rest.fdcId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: usda-fdc-mcp
+      transport: http
+      tools:
+        - name: search-foods
+          description: "Search USDA FoodData Central for foods by name or keyword"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "usda-fdc.search-foods"
+          with:
+            query: "tools.query"
+            dataType: "tools.dataType"
+            pageSize: "tools.pageSize"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-food-nutrition
+          description: "Get detailed nutritional composition for a specific food by FDC ID"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "usda-fdc.get-food"
+          with:
+            fdcId: "tools.fdcId"
+            format: "full"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: browse-foods
+          description: "Browse the FoodData Central food list by data type"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "usda-fdc.list-foods"
+          with:
+            dataType: "tools.dataType"
+            pageSize: "tools.pageSize"
+            pageNumber: "tools.pageNumber"
+          outputParameters:
+            - type: array
+              mapping: "$."

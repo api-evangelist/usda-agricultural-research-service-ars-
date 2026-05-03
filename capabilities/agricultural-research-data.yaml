@@ -1,0 +1,185 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "USDA ARS Agricultural Research Data"
+  description: >-
+    Unified capability for USDA Agricultural Research Service data access,
+    combining FoodData Central nutritional data with Ag Data Commons agricultural
+    research dataset discovery. Supports nutritionists, agricultural researchers,
+    food scientists, and data analysts.
+  tags:
+    - Food Data
+    - Nutrition
+    - Agricultural Research
+    - Open Data
+    - Federal Government
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      USDA_FDC_API_KEY: USDA_FDC_API_KEY
+
+capability:
+  consumes:
+    - import: usda-fdc
+      location: ./shared/fooddata-central.yaml
+    - import: usda-adc
+      location: ./shared/ag-data-commons.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: ars-data-api
+      description: "Unified REST API for USDA ARS food and agricultural research data."
+      resources:
+        - path: /v1/foods/search
+          name: food-search
+          description: "Food nutritional data search"
+          operations:
+            - method: GET
+              name: search-foods
+              description: "Search USDA FoodData Central for nutritional data"
+              call: "usda-fdc.search-foods"
+              with:
+                query: "rest.query"
+                dataType: "rest.dataType"
+                pageSize: "rest.pageSize"
+                pageNumber: "rest.pageNumber"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/foods/{fdcId}
+          name: food
+          description: "Individual food nutritional record"
+          operations:
+            - method: GET
+              name: get-food
+              description: "Get full nutritional data for a specific food"
+              call: "usda-fdc.get-food"
+              with:
+                fdcId: "rest.fdcId"
+                format: "full"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/research/datasets
+          name: datasets
+          description: "Agricultural research datasets"
+          operations:
+            - method: GET
+              name: search-datasets
+              description: "Search Ag Data Commons for research datasets"
+              call: "usda-adc.search-datasets"
+              with:
+                q: "rest.q"
+                rows: "rest.rows"
+                start: "rest.start"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/research/datasets/{id}
+          name: dataset
+          description: "Research dataset detail"
+          operations:
+            - method: GET
+              name: get-dataset
+              description: "Get full metadata for a research dataset"
+              call: "usda-adc.get-dataset"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: ars-data-mcp
+      transport: http
+      description: "MCP server for AI-assisted USDA ARS food and agricultural research data access."
+      tools:
+        - name: search-foods
+          description: >-
+            Search USDA FoodData Central for foods by name or keyword. Returns
+            nutritional data from Foundation, SR Legacy, Survey, and Branded food databases.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "usda-fdc.search-foods"
+          with:
+            query: "tools.query"
+            dataType: "tools.dataType"
+            pageSize: "tools.pageSize"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-food-nutrition
+          description: >-
+            Get detailed nutritional composition (calories, macros, vitamins, minerals)
+            for a specific food item by its USDA FDC ID.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "usda-fdc.get-food"
+          with:
+            fdcId: "tools.fdcId"
+            format: "full"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: browse-foundation-foods
+          description: >-
+            Browse USDA Foundation Foods — the highest quality nutritional data with
+            detailed metadata and extended nutrient values.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "usda-fdc.list-foods"
+          with:
+            dataType: "Foundation"
+            pageSize: "tools.pageSize"
+            pageNumber: "tools.pageNumber"
+          outputParameters:
+            - type: array
+              mapping: "$."
+        - name: search-research-datasets
+          description: >-
+            Search USDA Ag Data Commons for agricultural research datasets covering
+            soil health, crop genetics, animal production, food safety, and more.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "usda-adc.search-datasets"
+          with:
+            q: "tools.q"
+            rows: "tools.rows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-research-dataset
+          description: "Get full metadata and download links for a specific USDA research dataset"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "usda-adc.get-dataset"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-dataset-records
+          description: >-
+            Query tabular data records within a published USDA research dataset
+            (for datasets with structured/tabular data in the Ag Data Commons datastore).
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "usda-adc.query-datastore"
+          with:
+            resource_id: "tools.resource_id"
+            q: "tools.q"
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."

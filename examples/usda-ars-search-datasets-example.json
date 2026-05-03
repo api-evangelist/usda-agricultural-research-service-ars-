@@ -1,0 +1,72 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://data.nal.usda.gov/api/action/package_search?q=soil+health&rows=2",
+    "description": "Search Ag Data Commons for soil health datasets"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "success": true,
+      "result": {
+        "count": 47,
+        "results": [
+          {
+            "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "name": "ltar-soil-health-indicators",
+            "title": "Long-Term Agroecosystem Research (LTAR) Network Soil Health Indicators",
+            "notes": "Soil health indicator data collected from LTAR network sites across the United States, including biological, chemical, and physical soil properties.",
+            "author": "Spiegal, Sheri",
+            "organization": {
+              "name": "ars-southwest-watershed-research-center",
+              "title": "USDA ARS Southwest Watershed Research Center"
+            },
+            "tags": [
+              {"name": "soil-health"},
+              {"name": "carbon"},
+              {"name": "LTAR"},
+              {"name": "agroecosystem"}
+            ],
+            "resources": [
+              {
+                "id": "resource-001",
+                "name": "Soil Health Measurements 2018-2023",
+                "format": "CSV",
+                "url": "https://agdatacommons.nal.usda.gov/articles/dataset/ltar-soil-health/data.csv"
+              }
+            ],
+            "metadata_created": "2023-06-15T00:00:00Z",
+            "metadata_modified": "2025-02-10T00:00:00Z",
+            "license_title": "Creative Commons Attribution"
+          },
+          {
+            "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+            "name": "soil-carbon-sequestration-grasslands",
+            "title": "Soil Carbon Sequestration in Managed Grassland Systems",
+            "notes": "Data from long-term study of soil organic carbon dynamics in managed grasslands under various grazing regimes.",
+            "author": "Franzluebbers, Alan",
+            "organization": {
+              "name": "ars-southeast-watershed-research-laboratory",
+              "title": "USDA ARS Southeast Watershed Research Laboratory"
+            },
+            "tags": [
+              {"name": "soil-carbon"},
+              {"name": "grassland"},
+              {"name": "carbon-sequestration"}
+            ],
+            "resources": [
+              {
+                "id": "resource-002",
+                "name": "Soil Carbon Data 1993-2020",
+                "format": "XLSX",
+                "url": "https://agdatacommons.nal.usda.gov/articles/dataset/soil-carbon/data.xlsx"
+              }
+            ],
+            "metadata_created": "2022-03-20T00:00:00Z",
+            "metadata_modified": "2024-11-05T00:00:00Z"
+          }
+        ]
+      }
+    }
+  }
+}
