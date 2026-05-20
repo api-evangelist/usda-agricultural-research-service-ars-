@@ -1,5 +1,8 @@
 aid: usda-agricultural-research-service-ars-
 url: https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/apis.yml
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/usda-ars
 apis:
 - aid: usda-agricultural-research-service-ars-:fooddata-central-api
   name: USDA FoodData Central API
