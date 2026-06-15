@@ -1,0 +1,1050 @@
+{
+  "item": [
+    {
+      "id": "633da0a3-3e54-4f07-9c4d-4be596f02c50",
+      "name": "Foods",
+      "description": {
+        "content": "Retrieve food records by FDC ID",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "061c8ef3-011a-4701-a882-d02f2aaf0201",
+          "name": "Get Food by FDC ID",
+          "request": {
+            "name": "Get Food by FDC ID",
+            "description": {
+              "content": "Retrieves detailed nutritional data for a single food identified by its FoodData Central ID (fdcId).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "food",
+                ":fdcId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "abridged",
+                  "description": "Optional format. Default is abridged; 'full' returns all nutrient data for the food."
+                },
+                {
+                  "disabled": false,
+                  "key": "nutrients",
+                  "value": "<integer>,<integer>",
+                  "description": "Optional list of nutrient numbers to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your data.gov API key (can also be passed as X-Api-Key header)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "fdcId",
+                  "description": "(Required) The unique FoodData Central ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01bccc6c-7320-463f-9372-3d44b4bc564c",
+              "name": "Food details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "food",
+                    ":fdcId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "abridged"
+                    },
+                    {
+                      "key": "nutrients",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fdcId",
+                      "description": "(Required) The unique FoodData Central ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fdcId\": 4491,\n  \"description\": \"string\",\n  \"dataType\": \"Experimental\",\n  \"publishedDate\": \"1996-10-20\",\n  \"foodNutrients\": [\n    {\n      \"nutrientId\": 3610,\n      \"nutrientName\": \"string\",\n      \"nutrientNumber\": \"string\",\n      \"unitName\": \"string\",\n      \"value\": 5620.3185865510195,\n      \"derivationCode\": \"string\",\n      \"derivationDescription\": \"string\"\n    },\n    {\n      \"nutrientId\": 9123,\n      \"nutrientName\": \"string\",\n      \"nutrientNumber\": \"string\",\n      \"unitName\": \"string\",\n      \"value\": 7866.9255008052905,\n      \"derivationCode\": \"string\",\n      \"derivationDescription\": \"string\"\n    }\n  ],\n  \"foodCategory\": \"string\",\n  \"brandOwner\": \"string\",\n  \"ingredients\": \"string\",\n  \"servingSize\": 7939.251494167168,\n  \"servingSizeUnit\": \"string\",\n  \"modifiedDate\": \"1956-07-15\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "205b82f4-0018-40a0-9e6e-ed81624b6f75",
+              "name": "Food not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "food",
+                    ":fdcId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "abridged"
+                    },
+                    {
+                      "key": "nutrients",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fdcId",
+                      "description": "(Required) The unique FoodData Central ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bef35df-58d9-45f5-9643-8ff4beaf54b1",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "food",
+                    ":fdcId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "abridged"
+                    },
+                    {
+                      "key": "nutrients",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fdcId",
+                      "description": "(Required) The unique FoodData Central ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38d6fbf0-3167-4dcb-8dc6-ddc39d191e75",
+          "name": "Get Multiple Foods by FDC IDs",
+          "request": {
+            "name": "Get Multiple Foods by FDC IDs",
+            "description": {
+              "content": "Retrieves details for multiple foods specified by FDC IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "foods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fdcIds",
+                  "value": "<integer>,<integer>",
+                  "description": "(Required) List of FDC IDs (comma-separated, max 20)"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "nutrients",
+                  "value": "<integer>,<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d3b59ff-128f-4cfb-b3e3-12387cf1f33c",
+              "name": "List of food items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "foods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fdcIds",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nutrients",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fdcId\": 8851,\n    \"description\": \"string\",\n    \"dataType\": \"Survey (FNDDS)\",\n    \"publishedDate\": \"1947-02-06\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 7202,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 549.76053525996,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      },\n      {\n        \"nutrientId\": 8722,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 4144.130539250405,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      }\n    ],\n    \"foodCategory\": \"string\",\n    \"brandOwner\": \"string\",\n    \"ingredients\": \"string\",\n    \"servingSize\": 9990.738932316392,\n    \"servingSizeUnit\": \"string\",\n    \"modifiedDate\": \"1957-08-19\"\n  },\n  {\n    \"fdcId\": 7827,\n    \"description\": \"string\",\n    \"dataType\": \"Branded\",\n    \"publishedDate\": \"2015-09-18\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 5351,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 2402.8961259922808,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      },\n      {\n        \"nutrientId\": 6462,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 6892.74787395198,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      }\n    ],\n    \"foodCategory\": \"string\",\n    \"brandOwner\": \"string\",\n    \"ingredients\": \"string\",\n    \"servingSize\": 9719.794606346697,\n    \"servingSizeUnit\": \"string\",\n    \"modifiedDate\": \"1950-09-21\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edfb03d9-f7b5-4447-9a14-8fcf82e66eab",
+          "name": "Get Multiple Foods by FDC IDs (POST)",
+          "request": {
+            "name": "Get Multiple Foods by FDC IDs (POST)",
+            "description": {
+              "content": "Retrieves details for multiple foods. POST variant allows larger ID lists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "foods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fdcIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"format\": \"<string>\",\n  \"nutrients\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c2743e2-7e23-48d4-879d-c5d0d175d3bf",
+              "name": "List of food items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "foods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fdcIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"format\": \"<string>\",\n  \"nutrients\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fdcId\": 8851,\n    \"description\": \"string\",\n    \"dataType\": \"Survey (FNDDS)\",\n    \"publishedDate\": \"1947-02-06\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 7202,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 549.76053525996,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      },\n      {\n        \"nutrientId\": 8722,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 4144.130539250405,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      }\n    ],\n    \"foodCategory\": \"string\",\n    \"brandOwner\": \"string\",\n    \"ingredients\": \"string\",\n    \"servingSize\": 9990.738932316392,\n    \"servingSizeUnit\": \"string\",\n    \"modifiedDate\": \"1957-08-19\"\n  },\n  {\n    \"fdcId\": 7827,\n    \"description\": \"string\",\n    \"dataType\": \"Branded\",\n    \"publishedDate\": \"2015-09-18\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 5351,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 2402.8961259922808,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      },\n      {\n        \"nutrientId\": 6462,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 6892.74787395198,\n        \"derivationCode\": \"string\",\n        \"derivationDescription\": \"string\"\n      }\n    ],\n    \"foodCategory\": \"string\",\n    \"brandOwner\": \"string\",\n    \"ingredients\": \"string\",\n    \"servingSize\": 9719.794606346697,\n    \"servingSizeUnit\": \"string\",\n    \"modifiedDate\": \"1950-09-21\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a38ecfce-350c-4aa9-b34d-258ee17d0600",
+          "name": "List Foods (Paginated Abridged Format)",
+          "request": {
+            "name": "List Foods (Paginated Abridged Format)",
+            "description": {
+              "content": "Returns a paginated list of foods in abridged format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "foods",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataType",
+                  "value": "<string>,<string>",
+                  "description": "Filter by data type"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "50",
+                  "description": "Number of results per page (max 200)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f69c295f-5585-46eb-9f6c-3385868d89d6",
+              "name": "Paginated list of foods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "foods",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataType",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fdcId\": 5676,\n    \"description\": \"string\",\n    \"dataType\": \"string\",\n    \"publishedDate\": \"2018-07-24\",\n    \"brandOwner\": \"string\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 1211,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 4180.1708886041415\n      },\n      {\n        \"nutrientId\": 6288,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 268.13133935776114\n      }\n    ]\n  },\n  {\n    \"fdcId\": 6139,\n    \"description\": \"string\",\n    \"dataType\": \"string\",\n    \"publishedDate\": \"1974-11-24\",\n    \"brandOwner\": \"string\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 4328,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 971.510629239264\n      },\n      {\n        \"nutrientId\": 3362,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 8017.453368220447\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2c53c7e-b67a-4fe7-8707-a778d345eac4",
+          "name": "List Foods (POST)",
+          "request": {
+            "name": "List Foods (POST)",
+            "description": {},
+            "url": {
+              "path": [
+                "foods",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataType\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pageSize\": 50,\n  \"pageNumber\": 1,\n  \"sortBy\": \"<string>\",\n  \"sortOrder\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f52aea58-b6f1-47d4-aec9-83954399d74d",
+              "name": "Paginated list of foods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "foods",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataType\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pageSize\": 50,\n  \"pageNumber\": 1,\n  \"sortBy\": \"<string>\",\n  \"sortOrder\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fdcId\": 1963,\n    \"description\": \"string\",\n    \"dataType\": \"string\",\n    \"publishedDate\": \"1989-01-14\",\n    \"brandOwner\": \"string\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 2048,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 114.70165278658962\n      },\n      {\n        \"nutrientId\": 7329,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 1593.8367519668461\n      }\n    ]\n  },\n  {\n    \"fdcId\": 1118,\n    \"description\": \"string\",\n    \"dataType\": \"string\",\n    \"publishedDate\": \"1950-08-03\",\n    \"brandOwner\": \"string\",\n    \"foodNutrients\": [\n      {\n        \"nutrientId\": 2879,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 2159.818494560817\n      },\n      {\n        \"nutrientId\": 5634,\n        \"nutrientName\": \"string\",\n        \"nutrientNumber\": \"string\",\n        \"unitName\": \"string\",\n        \"value\": 2725.7803217709475\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a6d21707-bc17-4cbb-aec7-ce48f6114ce9",
+      "name": "Food Search",
+      "description": {
+        "content": "Search foods by keywords or other criteria",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5614c61b-204d-4b7c-8072-7f71412f8bb3",
+          "name": "Search Foods by Keywords",
+          "request": {
+            "name": "Search Foods by Keywords",
+            "description": {
+              "content": "Returns foods matching the search query. Supports boolean AND/OR operators. Returns up to 50 results per page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "foods",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) One or more keywords to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "dataType",
+                  "value": "<string>,<string>",
+                  "description": "Filter by data type(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "50",
+                  "description": "Number of results per page (max 200)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "brandOwner",
+                  "value": "<string>",
+                  "description": "Filter by brand owner (Branded Foods only)"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6178848d-006b-452f-99da-86a8040ac63a",
+              "name": "Food search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "foods",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "cheddar cheese"
+                    },
+                    {
+                      "key": "dataType",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brandOwner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalHits\": 8316,\n  \"currentPage\": 6136,\n  \"totalPages\": 1605,\n  \"foods\": [\n    {\n      \"fdcId\": 3161,\n      \"description\": \"string\",\n      \"dataType\": \"string\",\n      \"publishedDate\": \"1994-10-13\",\n      \"brandOwner\": \"string\",\n      \"brandName\": \"string\",\n      \"ingredients\": \"string\",\n      \"foodNutrients\": [\n        {\n          \"nutrientId\": 770,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 720.8436229231785\n        },\n        {\n          \"nutrientId\": 240,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 770.9506615472272\n        }\n      ],\n      \"foodCategory\": \"string\"\n    },\n    {\n      \"fdcId\": 3150,\n      \"description\": \"string\",\n      \"dataType\": \"string\",\n      \"publishedDate\": \"1972-01-04\",\n      \"brandOwner\": \"string\",\n      \"brandName\": \"string\",\n      \"ingredients\": \"string\",\n      \"foodNutrients\": [\n        {\n          \"nutrientId\": 4513,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 9146.319890508785\n        },\n        {\n          \"nutrientId\": 6564,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 708.9264101733372\n        }\n      ],\n      \"foodCategory\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfc85fa9-113b-497c-a89e-03c10eb49e45",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "foods",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "cheddar cheese"
+                    },
+                    {
+                      "key": "dataType",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brandOwner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80adda1d-cc90-45bf-bfc4-2cbcb0bf94e9",
+          "name": "Search Foods by Keywords (POST)",
+          "request": {
+            "name": "Search Foods by Keywords (POST)",
+            "description": {},
+            "url": {
+              "path": [
+                "foods",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"dataType\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pageSize\": 50,\n  \"pageNumber\": 1,\n  \"sortBy\": \"<string>\",\n  \"sortOrder\": \"<string>\",\n  \"brandOwner\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f04c9c64-8c0d-4b79-b581-5b2383d3f0af",
+              "name": "Food search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "foods",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"dataType\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pageSize\": 50,\n  \"pageNumber\": 1,\n  \"sortBy\": \"<string>\",\n  \"sortOrder\": \"<string>\",\n  \"brandOwner\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalHits\": 6738,\n  \"currentPage\": 3916,\n  \"totalPages\": 779,\n  \"foods\": [\n    {\n      \"fdcId\": 9936,\n      \"description\": \"string\",\n      \"dataType\": \"string\",\n      \"publishedDate\": \"2012-05-03\",\n      \"brandOwner\": \"string\",\n      \"brandName\": \"string\",\n      \"ingredients\": \"string\",\n      \"foodNutrients\": [\n        {\n          \"nutrientId\": 7782,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 420.49570498540743\n        },\n        {\n          \"nutrientId\": 4836,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 2235.9208525111662\n        }\n      ],\n      \"foodCategory\": \"string\"\n    },\n    {\n      \"fdcId\": 5548,\n      \"description\": \"string\",\n      \"dataType\": \"string\",\n      \"publishedDate\": \"1951-05-19\",\n      \"brandOwner\": \"string\",\n      \"brandName\": \"string\",\n      \"ingredients\": \"string\",\n      \"foodNutrients\": [\n        {\n          \"nutrientId\": 9944,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 255.34590560763348\n        },\n        {\n          \"nutrientId\": 2789,\n          \"nutrientName\": \"string\",\n          \"nutrientNumber\": \"string\",\n          \"unitName\": \"string\",\n          \"value\": 177.88046457562046\n        }\n      ],\n      \"foodCategory\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nal.usda.gov/fdc/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "884359bb-19b3-4671-9b1c-c101568970a9",
+    "name": "USDA FoodData Central API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USDA FoodData Central (FDC) API provides access to an integrated data system with extended nutritional and food component data. Data types include Foundation Foods, SR Legacy, Survey Foods (FNDDS), Branded Foods, and Experimental Foods. Requires a free data.gov API key.\n\nContact Support:\n Name: USDA National Agricultural Library - FoodData Central",
+      "type": "text/plain"
+    }
+  }
+}

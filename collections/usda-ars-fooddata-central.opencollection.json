@@ -1,0 +1,254 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USDA FoodData Central API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Foods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Food by FDC ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nal.usda.gov/fdc/v1/food/:fdcId",
+            "params": [
+              {
+                "name": "fdcId",
+                "value": "534358",
+                "type": "path",
+                "description": "The unique FoodData Central ID"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Optional format. Default is abridged; 'full' returns all nutrient data for the food."
+              },
+              {
+                "name": "nutrients",
+                "value": "",
+                "type": "query",
+                "description": "Optional list of nutrient numbers to return"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your data.gov API key (can also be passed as X-Api-Key header)"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed nutritional data for a single food identified by its FoodData Central ID (fdcId)."
+        },
+        {
+          "info": {
+            "name": "Get Multiple Foods by FDC IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nal.usda.gov/fdc/v1/foods",
+            "params": [
+              {
+                "name": "fdcIds",
+                "value": "",
+                "type": "query",
+                "description": "List of FDC IDs (comma-separated, max 20)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nutrients",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves details for multiple foods specified by FDC IDs."
+        },
+        {
+          "info": {
+            "name": "Get Multiple Foods by FDC IDs (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nal.usda.gov/fdc/v1/foods",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves details for multiple foods. POST variant allows larger ID lists."
+        },
+        {
+          "info": {
+            "name": "List Foods (Paginated Abridged Format)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nal.usda.gov/fdc/v1/foods/list",
+            "params": [
+              {
+                "name": "dataType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data type"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 200)"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort field"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of foods in abridged format."
+        },
+        {
+          "info": {
+            "name": "List Foods (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nal.usda.gov/fdc/v1/foods/list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Foods (POST)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Food Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Foods by Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "cheddar cheese",
+                "type": "query",
+                "description": "One or more keywords to search for"
+              },
+              {
+                "name": "dataType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data type(s)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 200)"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "brandOwner",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand owner (Branded Foods only)"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns foods matching the search query. Supports boolean AND/OR operators. Returns up to 50 results per page."
+        },
+        {
+          "info": {
+            "name": "Search Foods by Keywords (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Foods by Keywords (POST)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

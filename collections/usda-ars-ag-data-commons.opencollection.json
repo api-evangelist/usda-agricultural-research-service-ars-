@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USDA Ag Data Commons CKAN API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Agricultural Research Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nal.usda.gov/api/action/package_search",
+            "params": [
+              {
+                "name": "q",
+                "value": "soil health",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "fq",
+                "value": "",
+                "type": "query",
+                "description": "Filter query (e.g., 'tags:\"corn\" organization:\"ars\"')"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return (max 1000)"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Offset for pagination"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field and direction"
+              }
+            ]
+          },
+          "docs": "Search the Ag Data Commons catalog for agricultural research datasets. Returns dataset metadata including title, description, author, and distribution formats."
+        },
+        {
+          "info": {
+            "name": "Get Dataset by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nal.usda.gov/api/action/package_show",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Dataset ID or name slug"
+              }
+            ]
+          },
+          "docs": "Retrieve full metadata for a specific dataset by its ID or name."
+        },
+        {
+          "info": {
+            "name": "List Dataset Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nal.usda.gov/api/action/tag_list",
+            "params": [
+              {
+                "name": "vocabulary_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of all tags used in the Ag Data Commons catalog."
+        },
+        {
+          "info": {
+            "name": "List Dataset Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nal.usda.gov/api/action/organization_list"
+          },
+          "docs": "Returns a list of organizations (e.g., ARS national programs) in the catalog."
+        },
+        {
+          "info": {
+            "name": "Search Datastore Resource Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nal.usda.gov/api/action/datastore_search",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "query",
+                "description": "The resource ID to query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "JSON object of field-value filter pairs"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset for pagination"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by"
+              }
+            ]
+          },
+          "docs": "Query records within a specific published dataset resource using the CKAN datastore. Returns tabular data rows from published datasets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
