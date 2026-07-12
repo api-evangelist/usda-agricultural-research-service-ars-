@@ -1,8 +1,14 @@
 aid: usda-agricultural-research-service-ars-
 url: https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/apis.yml
 common:
+  - type: DomainSecurity
+    url: security/usda-agricultural-research-service-ars--domain-security.yml
+  - type: Authentication
+    url: authentication/usda-agricultural-research-service-ars--authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/usda-ars
+  - url: http://www.ars.usda.gov/rss
+    type: Blog
 apis:
   - aid: usda-agricultural-research-service-ars-:fooddata-central-api
     name: USDA FoodData Central API

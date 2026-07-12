@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/usda-ars-fooddata-central-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: ApiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: data.gov API key. Register at https://api.data.gov/signup/
+  sources:
+  - openapi/usda-ars-fooddata-central-openapi.yml
+- name: ApiKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-Api-Key
+  sources:
+  - openapi/usda-ars-fooddata-central-openapi.yml
