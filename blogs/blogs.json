@@ -1,0 +1,14 @@
+{
+  "repo": "usda-agricultural-research-service-ars-",
+  "feeds": [
+    {
+      "source": "http://www.ars.usda.gov/rss",
+      "feed_url": "http://www.ars.usda.gov/rss",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 25
+}
