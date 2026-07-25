@@ -1,0 +1,189 @@
+openapi: 3.0.1
+info:
+  title: USDA Ag Data Commons CKAN Datasets Food Search API
+  description: The USDA Ag Data Commons is an agricultural research data repository powered by DKAN/CKAN. The API provides metadata discovery for datasets from USDA Agricultural Research Service national programs. No authentication required for read access.
+  version: '1.0'
+  contact:
+    name: USDA National Agricultural Library - Ag Data Commons
+    url: https://agdatacommons.nal.usda.gov
+  license:
+    name: CC0 1.0 Universal
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://data.nal.usda.gov
+security: []
+tags:
+- name: Food Search
+  description: Search foods by keywords or other criteria
+paths:
+  /foods/search:
+    get:
+      tags:
+      - Food Search
+      operationId: searchFoodsGet
+      summary: Search Foods by Keywords
+      description: Returns foods matching the search query. Supports boolean AND/OR operators. Returns up to 50 results per page.
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: One or more keywords to search for
+        schema:
+          type: string
+        example: cheddar cheese
+      - name: dataType
+        in: query
+        description: Filter by data type(s)
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Foundation
+            - Branded
+            - Survey (FNDDS)
+            - SR Legacy
+            - Experimental
+        style: form
+        explode: false
+      - name: pageSize
+        in: query
+        description: Number of results per page (max 200)
+        schema:
+          type: integer
+          default: 50
+          maximum: 200
+      - name: pageNumber
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - dataType.keyword
+          - lowercaseDescription.keyword
+          - fdcId
+          - publishedDate
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: brandOwner
+        in: query
+        description: Filter by brand owner (Branded Foods only)
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Food search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+        '400':
+          description: Bad request
+    post:
+      tags:
+      - Food Search
+      operationId: searchFoodsPost
+      summary: Search Foods by Keywords (POST)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: Search keywords
+                dataType:
+                  type: array
+                  items:
+                    type: string
+                pageSize:
+                  type: integer
+                  default: 50
+                pageNumber:
+                  type: integer
+                  default: 1
+                sortBy:
+                  type: string
+                sortOrder:
+                  type: string
+                brandOwner:
+                  type: string
+      responses:
+        '200':
+          description: Food search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+components:
+  schemas:
+    SearchResultFood:
+      type: object
+      properties:
+        fdcId:
+          type: integer
+        description:
+          type: string
+        dataType:
+          type: string
+        publishedDate:
+          type: string
+          format: date
+        brandOwner:
+          type: string
+          nullable: true
+        brandName:
+          type: string
+          nullable: true
+        ingredients:
+          type: string
+          nullable: true
+        foodNutrients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AbridgedFoodNutrient'
+        foodCategory:
+          type: string
+          nullable: true
+    SearchResult:
+      type: object
+      description: Food search response
+      properties:
+        totalHits:
+          type: integer
+          description: Total matching foods
+        currentPage:
+          type: integer
+        totalPages:
+          type: integer
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchResultFood'
+    AbridgedFoodNutrient:
+      type: object
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+        value:
+          type: number

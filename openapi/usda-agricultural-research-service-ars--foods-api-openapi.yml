@@ -1,0 +1,348 @@
+openapi: 3.0.1
+info:
+  title: USDA Ag Data Commons CKAN Datasets Foods API
+  description: The USDA Ag Data Commons is an agricultural research data repository powered by DKAN/CKAN. The API provides metadata discovery for datasets from USDA Agricultural Research Service national programs. No authentication required for read access.
+  version: '1.0'
+  contact:
+    name: USDA National Agricultural Library - Ag Data Commons
+    url: https://agdatacommons.nal.usda.gov
+  license:
+    name: CC0 1.0 Universal
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://data.nal.usda.gov
+security: []
+tags:
+- name: Foods
+  description: Retrieve food records by FDC ID
+paths:
+  /food/{fdcId}:
+    get:
+      tags:
+      - Foods
+      operationId: getFood
+      summary: Get Food by FDC ID
+      description: Retrieves detailed nutritional data for a single food identified by its FoodData Central ID (fdcId).
+      parameters:
+      - name: fdcId
+        in: path
+        required: true
+        description: The unique FoodData Central ID
+        schema:
+          type: integer
+        example: 534358
+      - name: format
+        in: query
+        description: Optional format. Default is abridged; 'full' returns all nutrient data for the food.
+        schema:
+          type: string
+          enum:
+          - abridged
+          - full
+          default: abridged
+      - name: nutrients
+        in: query
+        description: Optional list of nutrient numbers to return
+        schema:
+          type: array
+          items:
+            type: integer
+        style: form
+        explode: false
+      - name: api_key
+        in: query
+        description: Your data.gov API key (can also be passed as X-Api-Key header)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Food details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodItem'
+        '404':
+          description: Food not found
+        '429':
+          description: Rate limit exceeded
+  /foods:
+    get:
+      tags:
+      - Foods
+      operationId: getFoodsGet
+      summary: Get Multiple Foods by FDC IDs
+      description: Retrieves details for multiple foods specified by FDC IDs.
+      parameters:
+      - name: fdcIds
+        in: query
+        required: true
+        description: List of FDC IDs (comma-separated, max 20)
+        schema:
+          type: array
+          items:
+            type: integer
+        style: form
+        explode: false
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - abridged
+          - full
+      - name: nutrients
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+        style: form
+        explode: false
+      - name: api_key
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of food items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FoodItem'
+    post:
+      tags:
+      - Foods
+      operationId: getFoodsPost
+      summary: Get Multiple Foods by FDC IDs (POST)
+      description: Retrieves details for multiple foods. POST variant allows larger ID lists.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fdcIds:
+                  type: array
+                  items:
+                    type: integer
+                  description: List of FDC IDs (max 20)
+                format:
+                  type: string
+                  enum:
+                  - abridged
+                  - full
+                nutrients:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: List of food items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FoodItem'
+  /foods/list:
+    get:
+      tags:
+      - Foods
+      operationId: getFoodsListGet
+      summary: List Foods (Paginated Abridged Format)
+      description: Returns a paginated list of foods in abridged format.
+      parameters:
+      - name: dataType
+        in: query
+        description: Filter by data type
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Foundation
+            - Branded
+            - Survey (FNDDS)
+            - SR Legacy
+            - Experimental
+        style: form
+        explode: false
+      - name: pageSize
+        in: query
+        description: Number of results per page (max 200)
+        schema:
+          type: integer
+          default: 50
+          maximum: 200
+      - name: pageNumber
+        in: query
+        description: Page number for pagination
+        schema:
+          type: integer
+          default: 1
+      - name: sortBy
+        in: query
+        description: Sort field
+        schema:
+          type: string
+          enum:
+          - dataType.keyword
+          - lowercaseDescription.keyword
+          - fdcId
+          - publishedDate
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: api_key
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of foods
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AbridgedFoodItem'
+    post:
+      tags:
+      - Foods
+      operationId: getFoodsListPost
+      summary: List Foods (POST)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataType:
+                  type: array
+                  items:
+                    type: string
+                pageSize:
+                  type: integer
+                  default: 50
+                pageNumber:
+                  type: integer
+                  default: 1
+                sortBy:
+                  type: string
+                sortOrder:
+                  type: string
+      responses:
+        '200':
+          description: Paginated list of foods
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AbridgedFoodItem'
+components:
+  schemas:
+    AbridgedFoodNutrient:
+      type: object
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+        value:
+          type: number
+    AbridgedFoodItem:
+      type: object
+      description: Abridged food record
+      properties:
+        fdcId:
+          type: integer
+        description:
+          type: string
+        dataType:
+          type: string
+        publishedDate:
+          type: string
+          format: date
+        brandOwner:
+          type: string
+          nullable: true
+        foodNutrients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AbridgedFoodNutrient'
+    FoodNutrient:
+      type: object
+      description: Nutrient data for a food
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+          description: Measurement unit (g, mg, kcal, IU, etc.)
+        value:
+          type: number
+          description: Nutrient amount per 100g
+        derivationCode:
+          type: string
+        derivationDescription:
+          type: string
+    FoodItem:
+      type: object
+      description: Detailed food record with nutrients
+      properties:
+        fdcId:
+          type: integer
+          description: FoodData Central ID
+        description:
+          type: string
+          description: Food description/name
+        dataType:
+          type: string
+          enum:
+          - Foundation
+          - Branded
+          - Survey (FNDDS)
+          - SR Legacy
+          - Experimental
+        publishedDate:
+          type: string
+          format: date
+        foodNutrients:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodNutrient'
+        foodCategory:
+          type: string
+          nullable: true
+        brandOwner:
+          type: string
+          nullable: true
+          description: Brand owner (Branded Foods only)
+        ingredients:
+          type: string
+          nullable: true
+          description: Ingredient list (Branded Foods only)
+        servingSize:
+          type: number
+          nullable: true
+        servingSizeUnit:
+          type: string
+          nullable: true
+        modifiedDate:
+          type: string
+          format: date

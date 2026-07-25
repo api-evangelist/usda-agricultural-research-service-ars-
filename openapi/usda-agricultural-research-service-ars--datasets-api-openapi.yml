@@ -1,12 +1,8 @@
 openapi: 3.0.1
 info:
-  title: USDA Ag Data Commons CKAN API
-  description: >-
-    The USDA Ag Data Commons is an agricultural research data repository powered
-    by DKAN/CKAN. The API provides metadata discovery for datasets from USDA
-    Agricultural Research Service national programs. No authentication required
-    for read access.
-  version: "1.0"
+  title: USDA Ag Data Commons CKAN Datasets API
+  description: The USDA Ag Data Commons is an agricultural research data repository powered by DKAN/CKAN. The API provides metadata discovery for datasets from USDA Agricultural Research Service national programs. No authentication required for read access.
+  version: '1.0'
   contact:
     name: USDA National Agricultural Library - Ag Data Commons
     url: https://agdatacommons.nal.usda.gov
@@ -14,56 +10,50 @@ info:
     name: CC0 1.0 Universal
     url: https://creativecommons.org/publicdomain/zero/1.0/
 servers:
-  - url: https://data.nal.usda.gov
+- url: https://data.nal.usda.gov
 security: []
 tags:
-  - name: Datasets
-    description: Dataset metadata search and retrieval
-  - name: ARS Programs
-    description: ARS National Program dataset discovery
+- name: Datasets
+  description: Dataset metadata search and retrieval
 paths:
   /api/action/package_search:
     get:
       tags:
-        - Datasets
+      - Datasets
       operationId: searchDatasets
       summary: Search Agricultural Research Datasets
-      description: >-
-        Search the Ag Data Commons catalog for agricultural research datasets.
-        Returns dataset metadata including title, description, author, and
-        distribution formats.
+      description: Search the Ag Data Commons catalog for agricultural research datasets. Returns dataset metadata including title, description, author, and distribution formats.
       parameters:
-        - name: q
-          in: query
-          description: Search query string
-          schema:
-            type: string
-          example: soil health
-        - name: fq
-          in: query
-          description: >-
-            Filter query (e.g., 'tags:"corn" organization:"ars"')
-          schema:
-            type: string
-        - name: rows
-          in: query
-          description: Number of results to return (max 1000)
-          schema:
-            type: integer
-            default: 20
-            maximum: 1000
-        - name: start
-          in: query
-          description: Offset for pagination
-          schema:
-            type: integer
-            default: 0
-        - name: sort
-          in: query
-          description: Sort field and direction
-          schema:
-            type: string
-            example: score desc, metadata_modified desc
+      - name: q
+        in: query
+        description: Search query string
+        schema:
+          type: string
+        example: soil health
+      - name: fq
+        in: query
+        description: Filter query (e.g., 'tags:"corn" organization:"ars"')
+        schema:
+          type: string
+      - name: rows
+        in: query
+        description: Number of results to return (max 1000)
+        schema:
+          type: integer
+          default: 20
+          maximum: 1000
+      - name: start
+        in: query
+        description: Offset for pagination
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: Sort field and direction
+        schema:
+          type: string
+          example: score desc, metadata_modified desc
       responses:
         '200':
           description: Dataset search results
@@ -74,17 +64,17 @@ paths:
   /api/action/package_show:
     get:
       tags:
-        - Datasets
+      - Datasets
       operationId: getDataset
       summary: Get Dataset by ID
       description: Retrieve full metadata for a specific dataset by its ID or name.
       parameters:
-        - name: id
-          in: query
-          required: true
-          description: Dataset ID or name slug
-          schema:
-            type: string
+      - name: id
+        in: query
+        required: true
+        description: Dataset ID or name slug
+        schema:
+          type: string
       responses:
         '200':
           description: Dataset metadata
@@ -97,15 +87,15 @@ paths:
   /api/action/tag_list:
     get:
       tags:
-        - Datasets
+      - Datasets
       operationId: listTags
       summary: List Dataset Tags
       description: Returns a list of all tags used in the Ag Data Commons catalog.
       parameters:
-        - name: vocabulary_id
-          in: query
-          schema:
-            type: string
+      - name: vocabulary_id
+        in: query
+        schema:
+          type: string
       responses:
         '200':
           description: List of tags
@@ -123,7 +113,7 @@ paths:
   /api/action/organization_list:
     get:
       tags:
-        - Datasets
+      - Datasets
       operationId: listOrganizations
       summary: List Dataset Organizations
       description: Returns a list of organizations (e.g., ARS national programs) in the catalog.
@@ -144,52 +134,50 @@ paths:
   /api/action/datastore_search:
     get:
       tags:
-        - Datasets
+      - Datasets
       operationId: searchDatastoreResource
       summary: Search Datastore Resource Records
-      description: >-
-        Query records within a specific published dataset resource using the
-        CKAN datastore. Returns tabular data rows from published datasets.
+      description: Query records within a specific published dataset resource using the CKAN datastore. Returns tabular data rows from published datasets.
       parameters:
-        - name: resource_id
-          in: query
-          required: true
-          description: The resource ID to query
-          schema:
-            type: string
-        - name: q
-          in: query
-          description: Full-text search query
-          schema:
-            type: string
-        - name: filters
-          in: query
-          description: JSON object of field-value filter pairs
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: Number of rows to return
-          schema:
-            type: integer
-            default: 100
-            maximum: 32000
-        - name: offset
-          in: query
-          description: Offset for pagination
-          schema:
-            type: integer
-            default: 0
-        - name: fields
-          in: query
-          description: Comma-separated list of fields to return
-          schema:
-            type: string
-        - name: sort
-          in: query
-          description: Comma-separated list of fields to sort by
-          schema:
-            type: string
+      - name: resource_id
+        in: query
+        required: true
+        description: The resource ID to query
+        schema:
+          type: string
+      - name: q
+        in: query
+        description: Full-text search query
+        schema:
+          type: string
+      - name: filters
+        in: query
+        description: JSON object of field-value filter pairs
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of rows to return
+        schema:
+          type: integer
+          default: 100
+          maximum: 32000
+      - name: offset
+        in: query
+        description: Offset for pagination
+        schema:
+          type: integer
+          default: 0
+      - name: fields
+        in: query
+        description: Comma-separated list of fields to return
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Comma-separated list of fields to sort by
+        schema:
+          type: string
       responses:
         '200':
           description: Datastore query results
@@ -215,6 +203,33 @@ paths:
                           type: object
 components:
   schemas:
+    Resource:
+      type: object
+      description: A data file or distribution of a dataset
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        url:
+          type: string
+          format: uri
+        format:
+          type: string
+          description: File format (CSV, JSON, GeoTIFF, etc.)
+        size:
+          type: integer
+          nullable: true
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type: string
+          format: date-time
+          nullable: true
     PackageSearchResult:
       type: object
       properties:
@@ -292,31 +307,4 @@ components:
           format: date-time
         license_title:
           type: string
-          nullable: true
-    Resource:
-      type: object
-      description: A data file or distribution of a dataset
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-          nullable: true
-        url:
-          type: string
-          format: uri
-        format:
-          type: string
-          description: File format (CSV, JSON, GeoTIFF, etc.)
-        size:
-          type: integer
-          nullable: true
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type: string
-          format: date-time
           nullable: true
