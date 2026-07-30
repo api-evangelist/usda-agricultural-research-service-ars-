@@ -12,48 +12,54 @@ common:
   - url: http://www.ars.usda.gov/rss
     type: Blog
 apis:
-  - aid: usda-agricultural-research-service-ars-:fooddata-central-api
-    name: USDA FoodData Central API
-    tags:
-      - Food Data
-      - Nutrition
-      - Agriculture
-      - Federal Government
-      - Open Data
-    humanURL: https://fdc.nal.usda.gov/api-guide/
-    properties:
-      - url: https://fdc.nal.usda.gov/api-guide/
-        type: Documentation
-      - url: https://fdc.nal.usda.gov/portal-data/external/apispec
-        type: OpenAPI
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/openapi/usda-ars-fooddata-central-openapi.yml
-        type: OpenAPI
-    description: >-
-      The USDA FoodData Central (FDC) API provides access to an integrated data system containing extended nutritional
-      and food component data for thousands of foods. Data types include Foundation Foods, SR Legacy, Survey Foods
-      (FNDDS), Branded Foods, and Experimental Foods. Requires a free data.gov API key.
-  - aid: usda-agricultural-research-service-ars-:ag-data-commons-ckan-api
-    name: USDA Ag Data Commons CKAN API
-    tags:
-      - Agricultural Research
-      - Open Data
-      - Datasets
-      - CKAN
-      - Federal Government
-    humanURL: https://agdatacommons.nal.usda.gov
-    properties:
-      - url: https://agdatacommons.nal.usda.gov
-        type: Portal
-      - url: https://data.nal.usda.gov/about-ag-data-commons
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/openapi/usda-ars-ag-data-commons-openapi.yml
-        type: OpenAPI
-    description: >-
-      The USDA Ag Data Commons is a DKAN/CKAN-based open data repository for USDA agricultural research datasets. The
-      API provides metadata search and retrieval for datasets from ARS national programs including genomics, crop
-      science, soil health, animal production, and more. No authentication required for read access.
+- aid: >-
+    usda-agricultural-research-service-ars-:usda-agricultural-research-service-ars--datasets-api
+  name: USDA Agricultural Research Service (ARS) Datasets API
+  description: Dataset metadata search and retrieval
+  humanURL: https://fdc.nal.usda.gov/api-guide/
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/usda-agricultural-research-service-ars--datasets-api-openapi.yml
+  - type: Documentation
+    url: https://fdc.nal.usda.gov/api-guide/
+  - type: Portal
+    url: https://agdatacommons.nal.usda.gov
+  - type: Documentation
+    url: https://data.nal.usda.gov/about-ag-data-commons
+- aid: >-
+    usda-agricultural-research-service-ars-:usda-agricultural-research-service-ars--food-search-api
+  name: USDA Agricultural Research Service (ARS) Food Search API
+  description: Search foods by keywords or other criteria
+  humanURL: https://fdc.nal.usda.gov/api-guide/
+  tags:
+  - Food Search
+  properties:
+  - type: OpenAPI
+    url: openapi/usda-agricultural-research-service-ars--food-search-api-openapi.yml
+  - type: Documentation
+    url: https://fdc.nal.usda.gov/api-guide/
+  - type: Portal
+    url: https://agdatacommons.nal.usda.gov
+  - type: Documentation
+    url: https://data.nal.usda.gov/about-ag-data-commons
+- aid: >-
+    usda-agricultural-research-service-ars-:usda-agricultural-research-service-ars--foods-api
+  name: USDA Agricultural Research Service (ARS) Foods API
+  description: Retrieve food records by FDC ID
+  humanURL: https://fdc.nal.usda.gov/api-guide/
+  tags:
+  - Foods
+  properties:
+  - type: OpenAPI
+    url: openapi/usda-agricultural-research-service-ars--foods-api-openapi.yml
+  - type: Documentation
+    url: https://fdc.nal.usda.gov/api-guide/
+  - type: Portal
+    url: https://agdatacommons.nal.usda.gov
+  - type: Documentation
+    url: https://data.nal.usda.gov/about-ag-data-commons
 name: USDA Agricultural Research Service (ARS)
 tags:
   - Federal Government
@@ -63,7 +69,20 @@ tags:
   - Open Data
   - Research
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/usda-agricultural-research-service-ars-.png
 access: 3rd-Party
 created: '2024-11-21'
 modified: '2026-05-19'
