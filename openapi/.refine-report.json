@@ -1,0 +1,18 @@
+{
+  "provider": "usda-agricultural-research-service-ars-",
+  "sources": [
+    "usda-agricultural-research-service-ars--datasets-api-openapi.yml",
+    "usda-agricultural-research-service-ars--food-search-api-openapi.yml",
+    "usda-agricultural-research-service-ars--foods-api-openapi.yml"
+  ],
+  "outputs": [
+    "usda-agricultural-research-service-ars--datasets-api-openapi.yml",
+    "usda-agricultural-research-service-ars--food-search-api-openapi.yml",
+    "usda-agricultural-research-service-ars--foods-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
