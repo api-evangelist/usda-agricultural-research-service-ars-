@@ -1,0 +1,585 @@
+{
+  "item": [
+    {
+      "id": "06821e36-e085-4960-8e81-617e9ad21cdf",
+      "name": "Datasets",
+      "description": {
+        "content": "Dataset metadata search and retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "818e382b-a980-485a-bca8-958c0d0842b6",
+          "name": "Search Agricultural Research Datasets",
+          "request": {
+            "name": "Search Agricultural Research Datasets",
+            "description": {
+              "content": "Search the Ag Data Commons catalog for agricultural research datasets. Returns dataset metadata including title, description, author, and distribution formats.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "action",
+                "package_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "fq",
+                  "value": "<string>",
+                  "description": "Filter query (e.g., 'tags:\"corn\" organization:\"ars\"')"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "20",
+                  "description": "Number of results to return (max 1000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Offset for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field and direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5627afe-cea7-4532-937a-bd770845719e",
+              "name": "Dataset search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "action",
+                    "package_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "soil health"
+                    },
+                    {
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "20"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "score desc, metadata_modified desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"result\": {\n    \"count\": 9289,\n    \"results\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"title\": \"string\",\n        \"notes\": \"string\",\n        \"author\": \"string\",\n        \"author_email\": \"string\",\n        \"organization\": {\n          \"name\": \"string\",\n          \"title\": \"string\"\n        },\n        \"tags\": [\n          {\n            \"name\": \"string\",\n            \"display_name\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"display_name\": \"string\"\n          }\n        ],\n        \"resources\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"url\": \"http://iPxbMxtlkWnzdPPlaNiOcZ.vyumK,m-JqBAkgvCGhMECGN\",\n            \"format\": \"string\",\n            \"size\": 5304,\n            \"created\": \"1970-10-07T22:11:19.990Z\",\n            \"last_modified\": \"2004-02-28T16:44:51.393Z\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"url\": \"http://zyZOWdeWAHcHysYrxGIjXqP.onobM0xAQaHVnMKTI1yLgFmxRfbT032NTIisc5sibmFlvz5\",\n            \"format\": \"string\",\n            \"size\": 1437,\n            \"created\": \"1965-07-28T16:34:02.583Z\",\n            \"last_modified\": \"1962-10-13T16:15:07.764Z\"\n          }\n        ],\n        \"metadata_created\": \"1949-03-08T17:17:39.358Z\",\n        \"metadata_modified\": \"1957-09-21T13:21:27.232Z\",\n        \"license_title\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"title\": \"string\",\n        \"notes\": \"string\",\n        \"author\": \"string\",\n        \"author_email\": \"string\",\n        \"organization\": {\n          \"name\": \"string\",\n          \"title\": \"string\"\n        },\n        \"tags\": [\n          {\n            \"name\": \"string\",\n            \"display_name\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"display_name\": \"string\"\n          }\n        ],\n        \"resources\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"url\": \"http://hggIuHAyjJJuPNZrHDiKyp.qqakJzWNy4rTlF7JdCyoghiWlD8Jr\",\n            \"format\": \"string\",\n            \"size\": 6537,\n            \"created\": \"1974-03-08T23:33:08.204Z\",\n            \"last_modified\": \"1977-10-28T18:50:03.327Z\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"url\": \"https://zrrMsgQnN.irzhOBimIvNyZOTMOJa\",\n            \"format\": \"string\",\n            \"size\": 4573,\n            \"created\": \"2012-10-29T02:06:26.946Z\",\n            \"last_modified\": \"1954-05-26T02:11:02.910Z\"\n          }\n        ],\n        \"metadata_created\": \"1960-08-10T16:26:26.145Z\",\n        \"metadata_modified\": \"1958-01-29T12:43:52.300Z\",\n        \"license_title\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f157970-b850-49a1-8d10-abbab4384929",
+          "name": "Get Dataset by ID",
+          "request": {
+            "name": "Get Dataset by ID",
+            "description": {
+              "content": "Retrieve full metadata for a specific dataset by its ID or name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "action",
+                "package_show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Dataset ID or name slug"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d62e86f-6239-4a7c-afb7-a1045c8587e5",
+              "name": "Dataset metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "action",
+                    "package_show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"result\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"notes\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"organization\": {\n      \"name\": \"string\",\n      \"title\": \"string\"\n    },\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      }\n    ],\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"url\": \"http://mDJyUdtpgDrCWFKTFjDeWVzYVPNuhd.qjwrqxU,XjrNvnu\",\n        \"format\": \"string\",\n        \"size\": 5868,\n        \"created\": \"2010-07-06T04:15:48.028Z\",\n        \"last_modified\": \"1953-02-24T07:59:33.888Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"url\": \"http://ohef.igztFOatj-FTq\",\n        \"format\": \"string\",\n        \"size\": 165,\n        \"created\": \"1985-07-22T10:18:12.906Z\",\n        \"last_modified\": \"1956-11-22T22:00:09.867Z\"\n      }\n    ],\n    \"metadata_created\": \"1975-03-11T18:37:04.742Z\",\n    \"metadata_modified\": \"1973-08-31T09:35:18.430Z\",\n    \"license_title\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77d7382e-2b77-473e-a63c-11d5c85feaf9",
+              "name": "Dataset not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "action",
+                    "package_show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee6057f0-e614-4487-960c-83058d692e5f",
+          "name": "List Dataset Tags",
+          "request": {
+            "name": "List Dataset Tags",
+            "description": {
+              "content": "Returns a list of all tags used in the Ag Data Commons catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "action",
+                "tag_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vocabulary_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95428108-be3e-4475-b9a9-d00a1d6b5a2e",
+              "name": "List of tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "action",
+                    "tag_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vocabulary_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"result\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bbffe09-8ce4-44a0-adda-d83890c4f2af",
+          "name": "List Dataset Organizations",
+          "request": {
+            "name": "List Dataset Organizations",
+            "description": {
+              "content": "Returns a list of organizations (e.g., ARS national programs) in the catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "action",
+                "organization_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37f6b805-ab23-428b-b188-2e4b6d9d367b",
+              "name": "List of organizations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "action",
+                    "organization_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"result\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e07f3576-4583-409d-b2f4-2f9ead4b6a75",
+          "name": "Search Datastore Resource Records",
+          "request": {
+            "name": "Search Datastore Resource Records",
+            "description": {
+              "content": "Query records within a specific published dataset resource using the CKAN datastore. Returns tabular data rows from published datasets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "action",
+                "datastore_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resource_id",
+                  "value": "<string>",
+                  "description": "(Required) The resource ID to query"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>",
+                  "description": "JSON object of field-value filter pairs"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of rows to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b8e4cbb-17f9-4505-8048-6b0e589b5358",
+              "name": "Datastore query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "action",
+                    "datastore_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"result\": {\n    \"total\": 7383\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.nal.usda.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2810ad13-0d3c-4da1-83cf-0930adfdf304",
+    "name": "USDA Ag Data Commons CKAN Datasets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USDA Ag Data Commons is an agricultural research data repository powered by DKAN/CKAN. The API provides metadata discovery for datasets from USDA Agricultural Research Service national programs. No authentication required for read access.\n\nContact Support:\n Name: USDA National Agricultural Library - Ag Data Commons",
+      "type": "text/plain"
+    }
+  }
+}

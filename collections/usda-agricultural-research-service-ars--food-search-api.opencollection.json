@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USDA Ag Data Commons CKAN Datasets Food Search API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Food Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Foods by Keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nal.usda.gov/foods/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "cheddar cheese",
+                "type": "query",
+                "description": "One or more keywords to search for"
+              },
+              {
+                "name": "dataType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data type(s)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 200)"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "brandOwner",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand owner (Branded Foods only)"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns foods matching the search query. Supports boolean AND/OR operators. Returns up to 50 results per page."
+        },
+        {
+          "info": {
+            "name": "Search Foods by Keywords (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://data.nal.usda.gov/foods/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Foods by Keywords (POST)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
