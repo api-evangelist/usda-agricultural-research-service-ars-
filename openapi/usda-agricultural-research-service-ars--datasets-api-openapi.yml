@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: USDA Ag Data Commons CKAN Datasets API
   description: The USDA Ag Data Commons is an agricultural research data repository powered by DKAN/CKAN. The API provides metadata discovery for datasets from USDA Agricultural Research Service national programs. No authentication required for read access.
@@ -203,33 +203,13 @@ paths:
                           type: object
 components:
   schemas:
-    Resource:
+    PackageShowResult:
       type: object
-      description: A data file or distribution of a dataset
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-          nullable: true
-        url:
-          type: string
-          format: uri
-        format:
-          type: string
-          description: File format (CSV, JSON, GeoTIFF, etc.)
-        size:
-          type: integer
-          nullable: true
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type: string
-          format: date-time
-          nullable: true
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Dataset'
     PackageSearchResult:
       type: object
       properties:
@@ -245,13 +225,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Dataset'
-    PackageShowResult:
-      type: object
-      properties:
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Dataset'
     Dataset:
       type: object
       description: Agricultural research dataset metadata
@@ -266,19 +239,23 @@ components:
           type: string
           description: Dataset title
         notes:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Description of the dataset
         author:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Dataset author(s)
         author_email:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         organization:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           description: Organization (ARS national program)
           properties:
             name:
@@ -306,5 +283,36 @@ components:
           type: string
           format: date-time
         license_title:
+          type:
+          - string
+          - 'null'
+    Resource:
+      type: object
+      description: A data file or distribution of a dataset
+      properties:
+        id:
           type: string
-          nullable: true
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+          format: uri
+        format:
+          type: string
+          description: File format (CSV, JSON, GeoTIFF, etc.)
+        size:
+          type:
+          - integer
+          - 'null'
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type:
+          - string
+          - 'null'
+          format: date-time

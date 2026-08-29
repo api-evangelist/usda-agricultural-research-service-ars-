@@ -1,17 +1,18 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: USDA Ag Data Commons CKAN Datasets Food Search API
-  description: The USDA Ag Data Commons is an agricultural research data repository powered by DKAN/CKAN. The API provides metadata discovery for datasets from USDA Agricultural Research Service national programs. No authentication required for read access.
+  title: USDA FoodData Central Food Search API
+  description: The USDA FoodData Central (FDC) API provides access to an integrated data system with extended nutritional and food component data. Data types include Foundation Foods, SR Legacy, Survey Foods (FNDDS), Branded Foods, and Experimental Foods. Requires a free data.gov API key.
   version: '1.0'
   contact:
-    name: USDA National Agricultural Library - Ag Data Commons
-    url: https://agdatacommons.nal.usda.gov
+    name: USDA National Agricultural Library - FoodData Central
+    url: https://fdc.nal.usda.gov/api-guide/
   license:
     name: CC0 1.0 Universal
     url: https://creativecommons.org/publicdomain/zero/1.0/
 servers:
-- url: https://data.nal.usda.gov
-security: []
+- url: https://api.nal.usda.gov/fdc/v1
+security:
+- ApiKeyQuery: []
 tags:
 - name: Food Search
   description: Search foods by keywords or other criteria
@@ -131,34 +132,6 @@ paths:
                 $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
-    SearchResultFood:
-      type: object
-      properties:
-        fdcId:
-          type: integer
-        description:
-          type: string
-        dataType:
-          type: string
-        publishedDate:
-          type: string
-          format: date
-        brandOwner:
-          type: string
-          nullable: true
-        brandName:
-          type: string
-          nullable: true
-        ingredients:
-          type: string
-          nullable: true
-        foodNutrients:
-          type: array
-          items:
-            $ref: '#/components/schemas/AbridgedFoodNutrient'
-        foodCategory:
-          type: string
-          nullable: true
     SearchResult:
       type: object
       description: Food search response
@@ -187,3 +160,45 @@ components:
           type: string
         value:
           type: number
+    SearchResultFood:
+      type: object
+      properties:
+        fdcId:
+          type: integer
+        description:
+          type: string
+        dataType:
+          type: string
+        publishedDate:
+          type: string
+          format: date
+        brandOwner:
+          type:
+          - string
+          - 'null'
+        brandName:
+          type:
+          - string
+          - 'null'
+        ingredients:
+          type:
+          - string
+          - 'null'
+        foodNutrients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AbridgedFoodNutrient'
+        foodCategory:
+          type:
+          - string
+          - 'null'
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: data.gov API key. Register at https://api.data.gov/signup/
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Key

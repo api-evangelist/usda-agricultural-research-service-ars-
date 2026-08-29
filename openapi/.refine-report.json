@@ -1,9 +1,8 @@
 {
   "provider": "usda-agricultural-research-service-ars-",
   "sources": [
-    "usda-agricultural-research-service-ars--datasets-api-openapi.yml",
-    "usda-agricultural-research-service-ars--food-search-api-openapi.yml",
-    "usda-agricultural-research-service-ars--foods-api-openapi.yml"
+    "_original/usda-ars-ag-data-commons-openapi.yml",
+    "_original/usda-ars-fooddata-central-openapi.yml"
   ],
   "outputs": [
     "usda-agricultural-research-service-ars--datasets-api-openapi.yml",
@@ -13,6 +12,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "usda-ars-ag-data-commons-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "usda-ars-fooddata-central-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "usda-agricultural-research-service-ars--datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "usda-agricultural-research-service-ars--food-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "usda-agricultural-research-service-ars--foods-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

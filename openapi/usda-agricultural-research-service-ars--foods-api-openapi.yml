@@ -1,17 +1,18 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: USDA Ag Data Commons CKAN Datasets Foods API
-  description: The USDA Ag Data Commons is an agricultural research data repository powered by DKAN/CKAN. The API provides metadata discovery for datasets from USDA Agricultural Research Service national programs. No authentication required for read access.
+  title: USDA FoodData Central Foods API
+  description: The USDA FoodData Central (FDC) API provides access to an integrated data system with extended nutritional and food component data. Data types include Foundation Foods, SR Legacy, Survey Foods (FNDDS), Branded Foods, and Experimental Foods. Requires a free data.gov API key.
   version: '1.0'
   contact:
-    name: USDA National Agricultural Library - Ag Data Commons
-    url: https://agdatacommons.nal.usda.gov
+    name: USDA National Agricultural Library - FoodData Central
+    url: https://fdc.nal.usda.gov/api-guide/
   license:
     name: CC0 1.0 Universal
     url: https://creativecommons.org/publicdomain/zero/1.0/
 servers:
-- url: https://data.nal.usda.gov
-security: []
+- url: https://api.nal.usda.gov/fdc/v1
+security:
+- ApiKeyQuery: []
 tags:
 - name: Foods
   description: Retrieve food records by FDC ID
@@ -275,32 +276,13 @@ components:
           type: string
           format: date
         brandOwner:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         foodNutrients:
           type: array
           items:
             $ref: '#/components/schemas/AbridgedFoodNutrient'
-    FoodNutrient:
-      type: object
-      description: Nutrient data for a food
-      properties:
-        nutrientId:
-          type: integer
-        nutrientName:
-          type: string
-        nutrientNumber:
-          type: string
-        unitName:
-          type: string
-          description: Measurement unit (g, mg, kcal, IU, etc.)
-        value:
-          type: number
-          description: Nutrient amount per 100g
-        derivationCode:
-          type: string
-        derivationDescription:
-          type: string
     FoodItem:
       type: object
       description: Detailed food record with nutrients
@@ -327,22 +309,57 @@ components:
           items:
             $ref: '#/components/schemas/FoodNutrient'
         foodCategory:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         brandOwner:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Brand owner (Branded Foods only)
         ingredients:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Ingredient list (Branded Foods only)
         servingSize:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         servingSizeUnit:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         modifiedDate:
           type: string
           format: date
+    FoodNutrient:
+      type: object
+      description: Nutrient data for a food
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+          description: Measurement unit (g, mg, kcal, IU, etc.)
+        value:
+          type: number
+          description: Nutrient amount per 100g
+        derivationCode:
+          type: string
+        derivationDescription:
+          type: string
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: data.gov API key. Register at https://api.data.gov/signup/
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Key
