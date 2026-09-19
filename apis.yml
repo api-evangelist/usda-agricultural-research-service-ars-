@@ -49,6 +49,8 @@ apis:
   description: Retrieve food records by FDC ID
   humanURL: https://fdc.nal.usda.gov/api-guide/
   tags:
+  - Food
+  tags_raw:
   - Foods
   properties:
   - type: OpenAPI
