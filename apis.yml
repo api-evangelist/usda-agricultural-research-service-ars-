@@ -63,7 +63,7 @@ apis:
     url: https://data.nal.usda.gov/about-ag-data-commons
 name: USDA Agricultural Research Service (ARS)
 tags:
-- Federal-Government
+- Federal Government
 - Agriculture
 - Food Safety
 - Nutrition
@@ -76,6 +76,7 @@ tags_raw:
 - Nutrition
 - Open Data
 - Research
+- Federal-Government
 kind: contract
 deliveryModel:
   model: unknown
@@ -144,3 +145,4 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 specificationVersion: '0.23'
+x-parent: usda

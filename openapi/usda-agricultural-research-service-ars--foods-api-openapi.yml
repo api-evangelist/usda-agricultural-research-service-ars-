@@ -249,19 +249,6 @@ paths:
                   $ref: '#/components/schemas/AbridgedFoodItem'
 components:
   schemas:
-    AbridgedFoodNutrient:
-      type: object
-      properties:
-        nutrientId:
-          type: integer
-        nutrientName:
-          type: string
-        nutrientNumber:
-          type: string
-        unitName:
-          type: string
-        value:
-          type: number
     FoodItem:
       type: object
       description: Detailed food record with nutrients
@@ -312,26 +299,6 @@ components:
         modifiedDate:
           type: string
           format: date
-    FoodNutrient:
-      type: object
-      description: Nutrient data for a food
-      properties:
-        nutrientId:
-          type: integer
-        nutrientName:
-          type: string
-        nutrientNumber:
-          type: string
-        unitName:
-          type: string
-          description: Measurement unit (g, mg, kcal, IU, etc.)
-        value:
-          type: number
-          description: Nutrient amount per 100g
-        derivationCode:
-          type: string
-        derivationDescription:
-          type: string
     AbridgedFoodItem:
       type: object
       description: Abridged food record
@@ -353,6 +320,39 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AbridgedFoodNutrient'
+    AbridgedFoodNutrient:
+      type: object
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+        value:
+          type: number
+    FoodNutrient:
+      type: object
+      description: Nutrient data for a food
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+          description: Measurement unit (g, mg, kcal, IU, etc.)
+        value:
+          type: number
+          description: Nutrient amount per 100g
+        derivationCode:
+          type: string
+        derivationDescription:
+          type: string
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

@@ -132,19 +132,6 @@ paths:
                 $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
-    AbridgedFoodNutrient:
-      type: object
-      properties:
-        nutrientId:
-          type: integer
-        nutrientName:
-          type: string
-        nutrientNumber:
-          type: string
-        unitName:
-          type: string
-        value:
-          type: number
     SearchResult:
       type: object
       description: Food search response
@@ -192,6 +179,19 @@ components:
           type:
           - string
           - 'null'
+    AbridgedFoodNutrient:
+      type: object
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+        value:
+          type: number
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

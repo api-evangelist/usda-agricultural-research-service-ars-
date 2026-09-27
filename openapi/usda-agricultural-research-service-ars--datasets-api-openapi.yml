@@ -203,6 +203,51 @@ paths:
                           type: object
 components:
   schemas:
+    PackageSearchResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        result:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total matching datasets
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Dataset'
+    Resource:
+      type: object
+      description: A data file or distribution of a dataset
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+          format: uri
+        format:
+          type: string
+          description: File format (CSV, JSON, GeoTIFF, etc.)
+        size:
+          type:
+          - integer
+          - 'null'
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type:
+          - string
+          - 'null'
+          format: date-time
     Dataset:
       type: object
       description: Agricultural research dataset metadata
@@ -264,21 +309,6 @@ components:
           type:
           - string
           - 'null'
-    PackageSearchResult:
-      type: object
-      properties:
-        success:
-          type: boolean
-        result:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: Total matching datasets
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/Dataset'
     PackageShowResult:
       type: object
       properties:
@@ -286,33 +316,3 @@ components:
           type: boolean
         result:
           $ref: '#/components/schemas/Dataset'
-    Resource:
-      type: object
-      description: A data file or distribution of a dataset
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        url:
-          type: string
-          format: uri
-        format:
-          type: string
-          description: File format (CSV, JSON, GeoTIFF, etc.)
-        size:
-          type:
-          - integer
-          - 'null'
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type:
-          - string
-          - 'null'
-          format: date-time
