@@ -210,36 +210,6 @@ components:
           type: boolean
         result:
           $ref: '#/components/schemas/Dataset'
-    Resource:
-      type: object
-      description: A data file or distribution of a dataset
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        url:
-          type: string
-          format: uri
-        format:
-          type: string
-          description: File format (CSV, JSON, GeoTIFF, etc.)
-        size:
-          type:
-          - integer
-          - 'null'
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type:
-          - string
-          - 'null'
-          format: date-time
     PackageSearchResult:
       type: object
       properties:
@@ -316,3 +286,33 @@ components:
           type:
           - string
           - 'null'
+    Resource:
+      type: object
+      description: A data file or distribution of a dataset
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+          format: uri
+        format:
+          type: string
+          description: File format (CSV, JSON, GeoTIFF, etc.)
+        size:
+          type:
+          - integer
+          - 'null'
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type:
+          - string
+          - 'null'
+          format: date-time

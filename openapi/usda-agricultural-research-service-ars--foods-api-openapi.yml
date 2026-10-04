@@ -249,6 +249,40 @@ paths:
                   $ref: '#/components/schemas/AbridgedFoodItem'
 components:
   schemas:
+    AbridgedFoodItem:
+      type: object
+      description: Abridged food record
+      properties:
+        fdcId:
+          type: integer
+        description:
+          type: string
+        dataType:
+          type: string
+        publishedDate:
+          type: string
+          format: date
+        brandOwner:
+          type:
+          - string
+          - 'null'
+        foodNutrients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AbridgedFoodNutrient'
+    AbridgedFoodNutrient:
+      type: object
+      properties:
+        nutrientId:
+          type: integer
+        nutrientName:
+          type: string
+        nutrientNumber:
+          type: string
+        unitName:
+          type: string
+        value:
+          type: number
     FoodItem:
       type: object
       description: Detailed food record with nutrients
@@ -319,40 +353,6 @@ components:
           type: string
         derivationDescription:
           type: string
-    AbridgedFoodNutrient:
-      type: object
-      properties:
-        nutrientId:
-          type: integer
-        nutrientName:
-          type: string
-        nutrientNumber:
-          type: string
-        unitName:
-          type: string
-        value:
-          type: number
-    AbridgedFoodItem:
-      type: object
-      description: Abridged food record
-      properties:
-        fdcId:
-          type: integer
-        description:
-          type: string
-        dataType:
-          type: string
-        publishedDate:
-          type: string
-          format: date
-        brandOwner:
-          type:
-          - string
-          - 'null'
-        foodNutrients:
-          type: array
-          items:
-            $ref: '#/components/schemas/AbridgedFoodNutrient'
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
