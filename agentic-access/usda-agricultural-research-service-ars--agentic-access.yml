@@ -1,17 +1,16 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/usda-ars-ag-data-commons-openapi.yml, openapi/usda-ars-fooddata-central-openapi.yml
+source: openapi/usda-agricultural-research-service-ars--datasets-api-openapi.yml, openapi/usda-agricultural-research-service-ars--food-search-api-openapi.yml,
+  openapi/usda-agricultural-research-service-ars--foods-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 12
   by_action_class:
-    connected: 9
-    acting: 3
+    connected: 12
   by_consequence:
-    read: 9
-    write: 3
+    read: 12
   human_in_the_loop_required: 0
 operations:
 - path: /api/action/package_search
@@ -64,6 +63,26 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /foods/search
+  method: get
+  operationId: searchFoodsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /foods/search
+  method: post
+  operationId: searchFoodsPost
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /food/{fdcId}
   method: get
   operationId: getFood
@@ -88,18 +107,12 @@ operations:
   method: post
   operationId: getFoodsPost
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /foods/list
   method: get
   operationId: getFoodsListGet
@@ -114,41 +127,9 @@ operations:
   method: post
   operationId: getFoodsListPost
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /foods/search
-  method: get
-  operationId: searchFoodsGet
-  x-agentic-access:
     action-class: connected
     consequence: read
     subject: optional
     token:
       max-ttl: 3600
     audit: none
-- path: /foods/search
-  method: post
-  operationId: searchFoodsPost
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
