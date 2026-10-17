@@ -145,6 +145,21 @@ components:
           type: string
         value:
           type: number
+    SearchResult:
+      type: object
+      description: Food search response
+      properties:
+        totalHits:
+          type: integer
+          description: Total matching foods
+        currentPage:
+          type: integer
+        totalPages:
+          type: integer
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchResultFood'
     SearchResultFood:
       type: object
       properties:
@@ -177,21 +192,6 @@ components:
           type:
           - string
           - 'null'
-    SearchResult:
-      type: object
-      description: Food search response
-      properties:
-        totalHits:
-          type: integer
-          description: Total matching foods
-        currentPage:
-          type: integer
-        totalPages:
-          type: integer
-        foods:
-          type: array
-          items:
-            $ref: '#/components/schemas/SearchResultFood'
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

@@ -203,28 +203,6 @@ paths:
                           type: object
 components:
   schemas:
-    PackageShowResult:
-      type: object
-      properties:
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Dataset'
-    PackageSearchResult:
-      type: object
-      properties:
-        success:
-          type: boolean
-        result:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: Total matching datasets
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/Dataset'
     Dataset:
       type: object
       description: Agricultural research dataset metadata
@@ -316,3 +294,25 @@ components:
           - string
           - 'null'
           format: date-time
+    PackageShowResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Dataset'
+    PackageSearchResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        result:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total matching datasets
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Dataset'
