@@ -1,4 +1,4 @@
-# USDA Agricultural Research Service (ARS) (usda-agricultural-research-service-ars-)
+# USDA Agricultural Research Service (ARS)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,82 +66,157 @@
 
 The USDA Agricultural Research Service (ARS) is the principal in-house research agency of the US Department of Agriculture. ARS conducts research to develop and implement solutions to agricultural problems that affect Americans every day. Research areas include crop protection, animal health, food safety, natural resource management, sustainable agriculture, and nutrition. ARS provides public data access through FoodData Central (nutrition data) and the Ag Data Commons (agricultural research datasets repository with CKAN/DKAN API).
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/apis.yml)
+**Areas:** Federal Government · Agriculture · Food Safety · Nutrition · Open Data · Research
 
-## Scope
+## USDA Agricultural Research Service (ARS) on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for USDA Agricultural Research Service (ARS) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/usda-agricultural-research-service-ars-/](https://apis.io/providers/usda-agricultural-research-service-ars-/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Federal Government
-- Agriculture
-- Food Safety
-- Nutrition
-- Open Data
-- Research
+- [USDA Agricultural Research Service (ARS) Datasets API](https://apis.io/apis/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--datasets-api/) — Dataset metadata search and retrieval
+- [USDA Agricultural Research Service (ARS) Food Search API](https://apis.io/apis/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--food-search-api/) — Search foods by keywords or other criteria
+- [USDA Agricultural Research Service (ARS) Foods API](https://apis.io/apis/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--foods-api/) — Retrieve food records by FDC ID
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-21
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### USDA FoodData Central API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The USDA FoodData Central (FDC) API provides access to an integrated data system containing extended nutritional and food component data for thousands of foods. Data types include Foundation Foods, SR Legacy, Survey Foods (FNDDS), Branded Foods, and Experimental Foods. Requires a free data.gov API key.
+- [Usda Agricultural Research Service Ars  Agentic Access](https://apis.io/agentic-access/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--agentic-access/)
 
-- **Human URL:** [https://fdc.nal.usda.gov/api-guide/](https://fdc.nal.usda.gov/api-guide/)
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Food Data
-- Nutrition
-- Agriculture
-- Federal Government
-- Open Data
+- [USDA FoodData Central Food Item](https://apis.io/schemas/usda-agricultural-research-service-ars-/usda-ars-food-item/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://fdc.nal.usda.gov/api-guide/)
-- [OpenAPI](https://fdc.nal.usda.gov/portal-data/external/apispec) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/openapi/usda-ars-fooddata-central-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/usda-ars-ag-data-commons.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/usda-ars-ag-data-commons.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/usda-ars-fooddata-central.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/usda-ars-fooddata-central.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### USDA Ag Data Commons CKAN API
+- [Usda Ars Food Item Structure](https://apis.io/json-structure/usda-agricultural-research-service-ars-/usda-ars-food-item-structure/)
 
-The USDA Ag Data Commons is a DKAN/CKAN-based open data repository for USDA agricultural research datasets. The API provides metadata search and retrieval for datasets from ARS national programs including genomics, crop science, soil health, animal production, and more. No authentication required for read access.
+#### JSON-LD (1)
 
-- **Human URL:** [https://agdatacommons.nal.usda.gov](https://agdatacommons.nal.usda.gov)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Usda Agricultural Research Service Ars Context](https://apis.io/jsonld/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--context/)
 
-- Agricultural Research
-- Open Data
-- Datasets
-- CKAN
-- Federal Government
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Portal](https://agdatacommons.nal.usda.gov)
-- [Documentation](https://data.nal.usda.gov/about-ag-data-commons)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/usda-agricultural-research-service-ars-/refs/heads/main/openapi/usda-ars-ag-data-commons-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/usda-ars-ag-data-commons.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/usda-ars-ag-data-commons.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/usda-ars-fooddata-central.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/usda-ars-fooddata-central.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [USDA Agricultural Research Service (ARS) Vocabulary](https://apis.io/vocabularies/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--vocabulary/)
 
-## Common Properties
+#### Examples (2)
 
-- [LinkedIn](https://www.linkedin.com/company/usda-ars)
+Example requests and responses.
 
-## Maintainers
+- [Usda Ars Search Datasets Example](https://apis.io/examples/usda-agricultural-research-service-ars-/usda-ars-search-datasets-example/)
+- [Usda Ars Search Foods Example](https://apis.io/examples/usda-agricultural-research-service-ars-/usda-ars-search-foods-example/)
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [USDA Ag Data Commons CKAN Datasets API](https://apis.io/collections/usda-agricultural-research-service-ars-/open-usda-agricultural-research-service-ars--datasets-api/)
+- [USDA Ag Data Commons CKAN Datasets Food Search API](https://apis.io/collections/usda-agricultural-research-service-ars-/open-usda-agricultural-research-service-ars--food-search-api/)
+- [USDA Ag Data Commons CKAN Datasets Foods API](https://apis.io/collections/usda-agricultural-research-service-ars-/open-usda-agricultural-research-service-ars--foods-api/)
+- [USDA Ag Data Commons CKAN API](https://apis.io/collections/usda-agricultural-research-service-ars-/open-usda-ars-ag-data-commons/)
+- [USDA FoodData Central API](https://apis.io/collections/usda-agricultural-research-service-ars-/open-usda-ars-fooddata-central/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [USDA Agricultural Research Service (ARS) — jsonschema rules](https://apis.io/rules/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--jsonschema-spectral-rules/)
+- [USDA Agricultural Research Service (ARS) API Rules](https://apis.io/rules/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Usda Agricultural Research Service Ars  Authentication](https://apis.io/security/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--authentication/)
+- [Usda Agricultural Research Service Ars  Domain Security](https://apis.io/security/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Usda Agricultural Research Service Ars  Plans Pricing](https://apis.io/plans/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Usda Agricultural Research Service Ars  Rate Limits](https://apis.io/rate-limits/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Usda Agricultural Research Service Ars  Finops](https://apis.io/finops/usda-agricultural-research-service-ars-/usda-agricultural-research-service-ars--finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://usda.gov)
+- [Blog](http://www.ars.usda.gov/rss)
+
+## API Evangelist rating
+
+**Kin Score 29.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 50.9 |
+| Contract governance | 13.6 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 7.9 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/usda-agricultural-research-service-ars-/](https://apis.io/providers/usda-agricultural-research-service-ars-/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for USDA Agricultural Research Service (ARS): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/usda-agricultural-research-service-ars-/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
